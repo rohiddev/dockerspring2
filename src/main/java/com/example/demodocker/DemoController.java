@@ -9,7 +9,7 @@ public class DemoController {
 
 	@GetMapping("/hello")
 	public String greeting() {
-		return "Hello 2";
+		return "Hello 3";
 	}
 
 }
