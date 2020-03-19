@@ -27,7 +27,7 @@
 	<repository> 
 	<id>nexus</id> 
 	<name>Release repository</name> 
-	<url>http://nexus:8081/repository/maven-releases</url>
+	<url>http://nexus:8081/repository/rohid</url>
 	</repository> 
 	</distributionManagement>
 
