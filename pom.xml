@@ -27,7 +27,7 @@
 	<repository> 
 	<id>Core-API-Java-Release</id> 
 	<name>Release repository</name> 
-	<url>http://nexus:8081/nexus/content/repositories/Core-Api-Release</url> 
+	<url>http://nexus:8081/nexus/public</url> 
 	</repository> 
 	</distributionManagement>
 
