@@ -27,7 +27,7 @@
 	<repository> 
 	<id>nexus</id> 
 	<name>Release repository</name> 
-	<url>http://nexus:8081/repository/maven-public</url>
+	<url>http://nexus:8081/repository/testrepo</url>
 	</repository> 
 	</distributionManagement>
 
