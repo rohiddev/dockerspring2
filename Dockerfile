@@ -1,4 +1,4 @@
 FROM java:8-jdk-alpine
-ADD target/app.jar app.jar
+ADD target/app.jar application.jar
 EXPOSE 8080:8080
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","application.jar"]
