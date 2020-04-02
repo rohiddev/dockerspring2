@@ -91,11 +91,11 @@ objects:
                 
                   stage('Build Image') {
                     steps {
-                     
+                      sh "cp target/app.jar target/application.jar"
                       script {
                         openshift.withCluster() {
                           openshift.withProject(env.DEMO_PROJECT) {
-                            openshift.startBuild("dockerspring", "--from-file=target/dockerspring.jar").logs("-f")
+                            openshift.startBuild("dockerspring", "--from-file=target/application.jar", "--wait=true").logs("-f")
                           }
                         }
                       }
