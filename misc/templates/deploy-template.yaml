@@ -3,11 +3,11 @@ kind: Template
 metadata:
   annotations:
     description: The spring-music application
-    tags: spring-music
-  name: spring-music
+    tags: dockerspring
+  name: dockerspring
 parameters:
   - name: APP_NAME
-    value: spring-music
+    value: dockerspring
     description: The name of the application
     required: true
   - name: GIT_URL
