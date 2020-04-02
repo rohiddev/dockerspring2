@@ -13,11 +13,6 @@ pipeline {
 				sh "mvn versions:set clean package -DnewVersion=${env.BUILD_VERSION} -DskipTests"
 			}
 		}
-
-		stage('Unit Test') {
-		  steps {
-		  	sh "mvn versions:set verify -DnewVersion=${env.BUILD_VERSION}"
-		  }
 		 
 
 		stage('Build Image') {
