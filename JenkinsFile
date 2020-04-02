@@ -20,7 +20,7 @@ pipeline {
 				script {
 					openshift.withCluster() {
 						openshift.withProject() {
-							openshift.startBuild("spring-music", "--from-file=target/summit-lab-spring-music-${env.BUILD_VERSION}.jar").logs("-f")
+							openshift.startBuild("dockerspring", "--from-file=target/dockerspring.jar").logs("-f")
 						}
 					}
 				}
@@ -32,7 +32,7 @@ pipeline {
 				script {
 					openshift.withCluster() {
 						openshift.withProject() {
-							dc = openshift.selector("dc", "spring-music")
+							dc = openshift.selector("dc", "dockerspring")
 							// dc.rollout().latest()
 							timeout(10) {
 								dc.rollout().status()
