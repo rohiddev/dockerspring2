@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Template
 metadata: 
   annotations: 
-    description: "The spring-music application"
+    description: "docker spring application"
     tags: dockerspring
   name: dockerspring
 objects: 
