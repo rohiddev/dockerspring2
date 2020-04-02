@@ -85,7 +85,7 @@ objects:
                   stage('Build App') {
                     steps {
                       git branch: 'master', url: 'https://github.com/rohiddev/dockerspring.git'
-                      sh "${mvnCmd} install -DskipTests=true"
+                      sh "mvn versions:set clean package -DskipTests"
                     }
                   }
                 
