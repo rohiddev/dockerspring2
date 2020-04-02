@@ -84,7 +84,7 @@ objects:
                 stages {
                   stage('Build App') {
                     steps {
-                      git branch: 'master', url: 'https://github.com/pebcac/spring-boot-jboss-wildfly.git'
+                      git branch: 'master', url: 'https://github.com/rohiddev/dockerspring.git'
                       sh "${mvnCmd} install -DskipTests=true"
                     }
                   }
