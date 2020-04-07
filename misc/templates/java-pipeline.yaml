@@ -76,6 +76,7 @@ objects:
       strategy: 
         jenkinsPipelineStrategy: 
           jenkinsfile: |-
+              def mvnCmd = "mvn -s configuration/cicd-settings-nexus.xml"
               pipeline {
                 agent {
                   label 'maven'
@@ -86,6 +87,11 @@ objects:
                     steps {
                       git branch: 'master', url: 'https://github.com/rohiddev/dockerspring.git'
                       sh "mvn versions:set clean package -DskipTests"
+                    }
+                  }
+                   stage('Archive App') {
+                    steps {
+                      sh "${mvnCmd} deploy -DskipTests=true -P nexus"
                     }
                   }
                 
