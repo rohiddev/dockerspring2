@@ -89,6 +89,13 @@ objects:
                       sh "mvn versions:set clean package -DskipTests"
                     }
                   }
+                  stage('Code Analysis') {
+                    steps {
+                      script {
+                        sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
+                      }
+                    }
+                  }
                    stage('Archive App') {
                     steps {
                       sh "${mvnCmd} deploy -DskipTests=true -P nexus"
