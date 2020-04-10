@@ -4,8 +4,8 @@ kind: Template
 metadata: 
   annotations: 
     description: "docker spring application"
-    tags: dockerspring
-  name: dockerspring
+    tags: "${APP_NAME}"
+  name: "${APP_NAME}"
 objects: 
   - 
     apiVersion: rbac.authorization.k8s.io/v1
@@ -85,7 +85,7 @@ objects:
                 stages {
                   stage('Build App') {
                     steps {
-                      git branch: 'master', url: 'https://github.com/rohiddev/dockerspring.git'
+                      git branch: "${GIT_REF}", url: "${GIT_URL}"
                       sh "mvn versions:set clean package -DskipTests"
                     }
                   }
@@ -101,7 +101,7 @@ objects:
                       script {
                         openshift.withCluster() {
                           openshift.withProject(env.DEMO_PROJECT) {
-                            openshift.startBuild("dockerspring", "--from-file=target/application.jar", "--wait=true").logs("-f")
+                            openshift.startBuild("${APP_NAME}", "--from-file=target/application.jar", "--wait=true").logs("-f")
                           }
                         }
                       }
@@ -113,7 +113,7 @@ objects:
                      
                       script {
                         openshift.withCluster() {
-                            dc = openshift.selector("dc", "dockerspring")
+                            dc = openshift.selector("dc", "${APP_NAME}")
                             timeout(10) {
                                 dc.rollout().status()
                           }
