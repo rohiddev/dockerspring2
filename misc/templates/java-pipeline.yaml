@@ -4,8 +4,8 @@ kind: Template
 metadata: 
   annotations: 
     description: "docker spring application"
-    tags: "${APP_NAME}"
-  name: "${APP_NAME}"
+    tags: dockerspring
+  name: dockerspring
 objects: 
   - 
     apiVersion: rbac.authorization.k8s.io/v1
