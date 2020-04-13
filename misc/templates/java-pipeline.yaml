@@ -3,9 +3,9 @@ apiVersion: v1
 kind: Template
 metadata: 
   annotations: 
-    description: "The spring-music application"
-    tags: dockerspring
-  name: dockerspring
+    description: "docker spring application"
+    tags: "${APP_NAME}"
+  name: "${APP_NAME}"
 objects: 
   - 
     apiVersion: rbac.authorization.k8s.io/v1
@@ -76,6 +76,7 @@ objects:
       strategy: 
         jenkinsPipelineStrategy: 
           jenkinsfile: |-
+              def mvnCmd = "mvn -s configuration/cicd-settings-nexus.xml"
               pipeline {
                 agent {
                   label 'maven'
@@ -84,18 +85,30 @@ objects:
                 stages {
                   stage('Build App') {
                     steps {
-                      git branch: 'master', url: 'https://github.com/pebcac/spring-boot-jboss-wildfly.git'
-                      sh "${mvnCmd} install -DskipTests=true"
+                      git branch: "${GIT_REF}", url: "${GIT_URL}"
+                      sh "mvn versions:set clean package -DskipTests"
+                    }
+                  }
+                  stage('Code Analysis') {
+                    steps {
+                      script {
+                        sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
+                      }
+                    }
+                  }
+                   stage('Archive App') {
+                    steps {
+                      sh "${mvnCmd} deploy -DskipTests=true -P nexus"
                     }
                   }
                 
                   stage('Build Image') {
                     steps {
-                     
+                      sh "cp target/app.jar target/application.jar"
                       script {
                         openshift.withCluster() {
                           openshift.withProject(env.DEMO_PROJECT) {
-                            openshift.startBuild("dockerspring", "--from-file=target/dockerspring.jar").logs("-f")
+                            openshift.startBuild("${APP_NAME}", "--from-file=target/application.jar", "--wait=true").logs("-f")
                           }
                         }
                       }
@@ -107,7 +120,7 @@ objects:
                      
                       script {
                         openshift.withCluster() {
-                            dc = openshift.selector("dc", "dockerspring")
+                            dc = openshift.selector("dc", "${APP_NAME}")
                             timeout(10) {
                                 dc.rollout().status()
                           }
