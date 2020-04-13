@@ -27,7 +27,7 @@
 	<repository> 
 	<id>nexus</id> 
 	<name>Release repository</name> 
-	<url>http://nexus:8081/repository/rohid</url>
+	<url>http://nexus:8081/repository/cfg</url>
 	</repository> 
 	</distributionManagement>
 
