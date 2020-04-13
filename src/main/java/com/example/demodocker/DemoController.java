@@ -41,11 +41,11 @@ public class DemoController {
 	@GetMapping("/")
 	public String greetingHello() {
 		
-		//System.out.println("password" + getPassword());
-		//System.out.println("username" + getUsername());
+		System.out.println("password" + getPassword());
+	    System.out.println("username" + getUsername());
 		
 		
-		return "Hello World 2";
+		return "Hello World";
 	}
 
 }
