@@ -1,6 +1,3 @@
 server:
-<<<<<<< HEAD
-  port: 8085
-=======
   port: 8080
->>>>>>> edf9c941de715dcc39a2cd095c95a97ee9c63f3e
+
