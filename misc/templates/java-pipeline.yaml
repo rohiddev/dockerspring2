@@ -107,7 +107,7 @@ objects:
                       sh "cp target/app.jar target/application.jar"
                       script {
                         openshift.withCluster() {
-                          openshift.withProject() {
+                          openshift.withProject("${PROJECT}") {
                             openshift.startBuild("${APP_NAME}", "--from-file=target/application.jar", "--wait=true").logs("-f")
                           }
                         }
@@ -253,4 +253,9 @@ parameters:
     name: GIT_REF
     required: true
     value: master
+ - 
+    description: "project or namespace"
+    name: PROJECT
+    required: true
+    value: dev
 
