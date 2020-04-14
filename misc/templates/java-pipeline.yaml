@@ -98,7 +98,7 @@ objects:
                   }
                    stage('Archive App') {
                     steps {
-                      sh "${mvnCmd} fabric8:deploy -DskipTests=true -P nexus"
+                      sh "${mvnCmd} deploy -DskipTests=true -P nexus"
                     }
                   }
                 
