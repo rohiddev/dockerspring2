@@ -253,7 +253,7 @@ parameters:
     name: GIT_REF
     required: true
     value: master
- - 
+  - 
     description: "project or namespace"
     name: PROJECT
     required: true
