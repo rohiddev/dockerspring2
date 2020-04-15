@@ -257,5 +257,5 @@ parameters:
     description: "project or namespace"
     name: PROJECT
     required: true
-    value: dev
+    value: cicd
 
