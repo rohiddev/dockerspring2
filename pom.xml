@@ -28,7 +28,7 @@
 	<id>nexus</id> 
 	<name>Release repository</name> 
         
-	<url>https://100.72.31.56:9002/repository/cfg</url>
+	<url>http://nexus:8081/repository/cfg</url>
 	</repository> 
 	</distributionManagement>
 
