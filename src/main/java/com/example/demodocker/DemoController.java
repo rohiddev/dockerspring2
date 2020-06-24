@@ -59,6 +59,8 @@ public class DemoController {
 	
 	@GetMapping("/readwrite")
 	public String readwrite() throws IOException {
+	
+	/*
 	    String str = "File Handling in Java using "+ 
                 " FileWriter and FileReader"; 
   
@@ -73,6 +75,7 @@ public class DemoController {
         System.out.println("Writing successful"); 
         //close the file  
         fw.close(); 
+	*/
         
         //
         int ch; 
