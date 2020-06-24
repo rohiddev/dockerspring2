@@ -81,22 +81,26 @@ public class DemoController {
         FileReader fr=null; 
         try
         { 
-            fr = new FileReader("output.txt"); 
+            fr = new FileReader("/deployments/output.txt"); 
         } 
         catch (FileNotFoundException fe) 
         { 
             System.out.println("File not found"); 
         } 
   
+        StringBuffer sb ;
         // read from FileReader till the end of file 
         while ((ch=fr.read())!=-1) 
+        {
+        	System.out.println("inside read block");
             System.out.print((char)ch); 
+           
+            
+        }
   
         // close the file 
         fr.close(); 
         
-        
-		
 		return "readwrite";
 		
 	}
