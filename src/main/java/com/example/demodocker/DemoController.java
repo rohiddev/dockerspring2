@@ -72,6 +72,7 @@ public class DemoController {
         for (int i = 0; i < str.length(); i++) 
             fw.write(str.charAt(i)); 
   
+        System.out.println("Writing successful");
         System.out.println("Writing successful"); 
         //close the file  
         fw.close(); 
