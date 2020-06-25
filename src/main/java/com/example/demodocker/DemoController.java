@@ -65,7 +65,7 @@ public class DemoController {
                 " FileWriter and FileReader"; 
   
         // attach a file to FileWriter  
-        FileWriter fw=new FileWriter("/output.txt"); 
+        FileWriter fw=new FileWriter("/var/dockerspring/output.txt"); 
   
         // read character wise from string and write  
         // into FileWriter  
@@ -87,7 +87,7 @@ public class DemoController {
         FileReader fr=null; 
         try
         { 
-            fr = new FileReader("/output.txt"); 
+            fr = new FileReader("/var/dockerspring/output.txt"); 
         } 
         catch (FileNotFoundException fe) 
         { 
