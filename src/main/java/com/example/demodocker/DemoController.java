@@ -38,10 +38,15 @@ public class DemoController {
 	
 	*/
     
-   
+   @Value("${greeter.message}")
+    private String greeterMessageFormat;
 
 	@GetMapping("/hello")
 	public String greeting() {
+		
+		String prefix = System.getenv().getOrDefault("GREETING_PREFIX", "Hi");
+                System.out.println("  prefix" +  prefix);
+		
 		return "Hello World 2";
 	}
 
