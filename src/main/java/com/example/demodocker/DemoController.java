@@ -40,12 +40,21 @@ public class DemoController {
     
    @Value("${greeter.message}")
     private String greeterMessageFormat;
+	
+	
+	@Value("${message}")
+    private String message;
 
 	@GetMapping("/hello")
 	public String greeting() {
 		
 		String prefix = System.getenv().getOrDefault("GREETING_PREFIX", "Hi");
                 System.out.println("  prefix" +  prefix);
+		
+		System.out.println("greeterMessageFormat" + greeterMessageFormat);
+		System.out.println("message" + message);
+		
+		
 		
 		return "Hello World 2";
 	}
@@ -57,7 +66,8 @@ public class DemoController {
 	    //System.out.println("username" + getUsername());
 		
 		
-		
+		System.out.println("greeterMessageFormat" + greeterMessageFormat);
+		System.out.println("message" + message);
 		
 		return "Hello World";
 	}
