@@ -69,7 +69,7 @@ public class DemoController {
 		System.out.println("greeterMessageFormat" + greeterMessageFormat);
 		System.out.println("message" + message);
 		
-		return "Hello World";
+		return "Hello World Application 2";
 	}
 	
 	@GetMapping("/readwrite")
